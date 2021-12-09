@@ -1,0 +1,22 @@
+<div class="well flex" *ngIf="currentWeather">
+    <div *ngIf="currentWeather.name.length === 0">
+        <h3>Zipcode {{currentWeather.zipcode}} not found.</h3>
+    </div>
+    <div *ngIf="currentWeather.name.length > 0">
+        <h3>{{currentWeather.name}} ({{currentWeather.zipcode}})</h3>
+        <h4>Current conditions: {{currentWeather.currentCondition}}</h4>
+        <h4>Temperatures today:</h4>
+        <p>
+        Current {{currentWeather.currentTemp}} F
+        - Max {{currentWeather.maxTemp}} F
+        - Min {{currentWeather.minTemp}} F
+        </p>
+        <p>
+        <a href="/forecast/{{currentWeather.zipcode}}">Show 5-day forecast for {{currentWeather.name}}</a>
+        </p>
+    </div>
+    <div>
+        <span class="close" (click)="remove()">×</span>
+        <img *ngIf="currentWeather.name.length > 0" src="{{currentWeather.iconUrl}}">
+    </div>
+</div>
